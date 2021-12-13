@@ -3,6 +3,8 @@ import org.junit.jupiter.api.Test;
 import com.skvortsov.MyStack;
 import com.skvortsov.StackException;
 
+import java.util.Optional;
+
 public class StackTest {
     @Test
     void shouldThrowFullStackException() throws StackException {
@@ -24,27 +26,14 @@ public class StackTest {
     }
 
     @Test
-    void optionalTestObjectIsPresent() throws StackException {
+    void optionalTest() throws StackException {
         MyStack stack = new MyStack(3);
         stack.addElement("1");
-        String element = stack.showTopElement();
-        Object objectElement = stack.showTopElement();
+        String element = stack.showTopElement().get();
+        Object objectElement = stack.showTopElement().get();
         Assertions.assertEquals(element, "1");
         Assertions.assertEquals(objectElement, "1");
         Assertions.assertTrue(element.equals("1"));
         Assertions.assertTrue(objectElement.equals("1"));
-
-    }
-
-    @Test
-    void optionalTestObjectIsNull() throws StackException {
-        MyStack stack = new MyStack(3);
-        stack.addElement(null);
-        String element = stack.showTopElement();
-        Object objectElement = stack.showTopElement();
-        Assertions.assertEquals(element, "Object is null");
-        Assertions.assertEquals(objectElement, "Object is null");
-        Assertions.assertTrue(element.equals("Object is null"));
-        Assertions.assertTrue(objectElement.equals("Object is null"));
     }
 }

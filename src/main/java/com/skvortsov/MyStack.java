@@ -27,13 +27,10 @@ public class MyStack implements Stackable {
         return arr[top--];
     }
 
-    public String showTopElement() {
+    public Optional<String> showTopElement() {
         Optional<String> optionalString = Optional.ofNullable(arr[top]);
-        if (optionalString.isPresent()) {
-            return optionalString.get();
+            return Optional.ofNullable(arr[top]);
         }
-        return "Object is null";
-    }
 
     public boolean isEmpty() {
         return top == -1;
